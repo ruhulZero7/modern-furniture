@@ -1,0 +1,23 @@
+.nav-menu .logo {
+  color: #ffaf00;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 30px;
+  margin: 10px 0px;
+}
+
+.nav-menu .logo:hover {
+  color: #ffaf00;
+}
+.nav-menu a {
+  color: #ffaf00;
+  text-decoration: none;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+.nav-item {
+  color: #ffaf00;
+  text-decoration: none;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
