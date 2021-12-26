@@ -12,6 +12,8 @@
 .card-image {
   overflow: hidden;
   text-align: center;
+  height: 150px;
+  width: 150px;
 }
 .card-row img {
   object-fit: cover;

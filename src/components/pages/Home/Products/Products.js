@@ -10,10 +10,11 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("/furnitures.json")
+    fetch("http://localhost:5000/furnitures")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+  console.log(products);
   return (
     <Container className="product-container">
       <h2 className="mt-5 uh" style={{ color: "#FF7004" }}>

@@ -17,7 +17,7 @@ const Header = () => {
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto item-cntainer">
               <Nav.Link as={Link} className="nav-item" to="/home">
                 Home
               </Nav.Link>
@@ -35,12 +35,17 @@ const Header = () => {
                 Dashboard
               </Nav.Link>
               {user.email ? (
-                <button onClick={logOut}>Logout</button>
+                <Nav.Link>
+                  <button className="btn btn-warning" onClick={logOut}>
+                    Logout
+                  </button>
+                </Nav.Link>
               ) : (
                 <Nav.Link as={Link} to="/login">
-                  <button>Login</button>
+                  <button className="btn btn-warning">Login</button>
                 </Nav.Link>
               )}
+              <span style={{ color: "white" }}>{user.displayName}</span>
             </Nav>
           </Navbar.Collapse>
         </Container>

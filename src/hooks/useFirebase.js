@@ -29,7 +29,6 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-
         const uri = location?.state?.from || "/";
         history.push(uri);
         logInModal();
@@ -49,6 +48,7 @@ const useFirebase = () => {
         const newUser = { email: email, displayName: name };
         setUser(newUser);
         // save user to the database
+
         saveUserToDatabase(email, name, "POST");
 
         //  send name to firebase after creation

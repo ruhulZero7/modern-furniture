@@ -1,10 +1,12 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Rating from "react-rating";
+import { Link, NavLink } from "react-router-dom";
 import "./SingleProduct.css";
 
 const SingleProduct = (props) => {
-  const { name, img, detail, star, brand, price } = props.product;
+  const { _id, key, name, img, detail, star, brand, price } = props.product;
+  console.log(_id, name);
   return (
     <div>
       <Col className="main-card">
@@ -33,7 +35,10 @@ const SingleProduct = (props) => {
                   <div>
                     <b className="price">Price: ${price} </b>
                   </div>
-                  <button className="btn btn-warning">Buy Now</button>
+
+                  <NavLink to={`/booking/${_id}`}>
+                    <button className="btn btn-warning">Buy Now</button>
+                  </NavLink>
                 </div>
               </div>
             </div>

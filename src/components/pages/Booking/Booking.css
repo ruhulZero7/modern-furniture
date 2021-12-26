@@ -1,0 +1,32 @@
+.purchase-furniture-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.furniture-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.furniture-detail-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.furniture-detail-form form input,
+.address-field {
+  width: 100%;
+  margin-top: 20px;
+}
+.furniture-rating {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+textarea {
+  margin-top: 20px;
+}

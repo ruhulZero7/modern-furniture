@@ -28,8 +28,8 @@ const Register = () => {
   };
   // console.log(loginData);
 
-  const location = useLocation();
   const history = useHistory();
+  const location = useLocation();
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
