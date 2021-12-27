@@ -5,7 +5,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Rating from "react-rating";
 import { useParams } from "react-router-dom";
-
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import Footer from "../../shared_components/Footer/Footer";
@@ -44,7 +43,7 @@ const Booking = () => {
         setFurniture(data);
       });
   }, []);
-  console.log(furniture);
+
   return (
     <Box>
       <Header />

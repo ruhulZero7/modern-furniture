@@ -1,12 +1,12 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import Rating from "react-rating";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./SingleProduct.css";
 
 const SingleProduct = (props) => {
-  const { _id, key, name, img, detail, star, brand, price } = props.product;
-  console.log(_id, name);
+  const { _id, name, img, detail, star, brand, price } = props.product;
+
   return (
     <div>
       <Col className="main-card">

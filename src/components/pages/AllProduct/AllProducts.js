@@ -20,9 +20,7 @@ const AllProducts = () => {
     <div>
       <Header />
       <Container className="product-container mb-5">
-        <h2 className="mt-5 uh" style={{ color: "#FF7004" }}>
-          OUR ALL PRODUCT
-        </h2>
+        <h2 className="mt-5 border-lf">OUR ALL PRODUCT</h2>
         <div className="underline mb-5"></div>
         <Row lg={2} md={2} sm={2} xs={1} className="g-4">
           {products.map((product) => (

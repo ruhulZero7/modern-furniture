@@ -14,12 +14,10 @@ const Products = () => {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  console.log(products);
+
   return (
     <Container className="product-container">
-      <h2 className="mt-5 uh" style={{ color: "#FF7004" }}>
-        POPULAR FURNITURE
-      </h2>
+      <h2 className="mt-5 border-lf">POPULAR FURNITURE</h2>
       <div className="underline mb-5"></div>
       <Row lg={2} md={2} sm={2} xs={1} className="g-4">
         {products.slice(0, 6).map((product) => (

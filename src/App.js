@@ -1,15 +1,12 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import About from "./components/pages/About/About";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AllProducts from "./components/pages/AllProduct/AllProducts";
 import Booking from "./components/pages/Booking/Booking";
-import ContactUs from "./components/pages/ContactUs/ContactUs";
 import Dashboard from "./components/pages/Dashboard/Dashboard/Dashboard";
 import Home from "./components/pages/Home/Home/Home";
 import Login from "./components/pages/Login/Login/Login";
 import PrivateRoute from "./components/pages/Login/Login/PrivateRoute/PrivateRoute";
 import Register from "./components/pages/Login/Register/Register";
 import NotFound from "./components/pages/NotFound/NotFound";
-import Footer from "./components/shared_components/Footer/Footer";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 
 function App() {
@@ -21,8 +18,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/all-products" component={AllProducts} />
-            <Route path="/about-us" component={About} />
-            <Route path="/contact-us" component={ContactUs} />
+
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <PrivateRoute exact path="/booking/:furnitureId">
@@ -33,7 +29,6 @@ function App() {
             </PrivateRoute>
             <Route path="*" component={NotFound} />
           </Switch>
-         
         </Router>
       </AuthProvider>
     </div>

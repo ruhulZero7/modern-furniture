@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Review.css";
-
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
-import { Paper } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Maximize } from "@mui/icons-material";
 
 const Review = () => {
   const { user } = useAuth();
   const [reviews, setReviews] = useState({});
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios.post("http://localhost:5000/reviews", data).then((res) => {
       if (res.data.insertedId) {
@@ -27,15 +24,6 @@ const Review = () => {
       }
     });
   };
-
-  //   useEffect(() => {
-  //     fetch(`https://shielded-dawn-55052.herokuapp.com/reviews/`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setReviews(data);
-  //         setValue("name", user?.displayName);
-  //       });
-  //   }, []);
 
   return (
     <div className="review-form" sx={{ mt: 10 }}>

@@ -1,18 +1,15 @@
-import Header from "../../../shared_components/Header/Header";
 import * as React from "react";
 import "./dashboard.css";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
+import { Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import ManageOrders from "../ManageOrders/ManageOrders";
 import DashboardHome from "../DashboardHome.js/DashboardHome";
@@ -24,29 +21,19 @@ import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import Review from "../Review/Review";
 import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
-import LocalMallTwoToneIcon from "@mui/icons-material/LocalMallTwoTone";
 import PaymentTwoToneIcon from "@mui/icons-material/PaymentTwoTone";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import ClearAllIcon from "@mui/icons-material/ClearAll";
 import HomeIcon from "@mui/icons-material/Home";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import FlakyIcon from "@mui/icons-material/Flaky";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import PrivateRoute from "../../Login/AdminRoute/AdminRoute";
-import logo from "../../../../images/logo/logo.png";
+import NotFound from "../../NotFound/NotFound";
 
 const drawerWidth = 240;
-
 const Dashboard = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -272,6 +259,9 @@ const Dashboard = (props) => {
           <AdminRoute path={`${path}/makeAdmin`}>
             <MakeAdmin></MakeAdmin>
           </AdminRoute>
+          <Route path={`${path}/*`}>
+            <NotFound />
+          </Route>
         </Switch>
       </Box>
     </Box>

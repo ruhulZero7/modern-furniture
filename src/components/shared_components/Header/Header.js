@@ -25,15 +25,11 @@ const Header = () => {
                 All Products
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/about-us">
-                About Us
-              </Nav.Link>
-              <Nav.Link as={Link} to="/contact-us">
-                Contact Us
-              </Nav.Link>
-              <Nav.Link as={Link} to="/dashboard">
-                Dashboard
-              </Nav.Link>
+              {user.email && (
+                <Nav.Link as={Link} to="/dashboard">
+                  Dashboard
+                </Nav.Link>
+              )}
               {user.email ? (
                 <Nav.Link>
                   <button className="btn btn-warning" onClick={logOut}>
