@@ -37,7 +37,7 @@ const Booking = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/furnitures/${furnitureId}`)
+    fetch(`http://localhost:5000/products/${furnitureId}`)
       .then((res) => res.json())
       .then((data) => {
         setFurniture(data);
