@@ -20,7 +20,7 @@ const Booking = () => {
   const onSubmit = (data) => {
     console.log(data);
     data.status = "Pending";
-    data.furnitureName = furniture.name;
+    data.productName = furniture.name;
     axios.post("http://localhost:5000/Orders", data).then((res) => {
       if (res.data.insertedId) {
         // order successfull modal
