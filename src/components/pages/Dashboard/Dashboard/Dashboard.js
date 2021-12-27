@@ -1,5 +1,6 @@
 import Header from "../../../shared_components/Header/Header";
 import * as React from "react";
+import "./dashboard.css";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -11,7 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import ManageOrders from "../ManageOrders/ManageOrders";
 import DashboardHome from "../DashboardHome.js/DashboardHome";
@@ -22,6 +23,27 @@ import AddProduct from "../AddProduct/AddProduct";
 import AdminRoute from "../../Login/AdminRoute/AdminRoute";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import Review from "../Review/Review";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
+import LocalMallTwoToneIcon from "@mui/icons-material/LocalMallTwoTone";
+import PaymentTwoToneIcon from "@mui/icons-material/PaymentTwoTone";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
+import HomeIcon from "@mui/icons-material/Home";
+import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import FlakyIcon from "@mui/icons-material/Flaky";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import PrivateRoute from "../../Login/AdminRoute/AdminRoute";
+import logo from "../../../../images/logo/logo.png";
 
 const drawerWidth = 240;
 
@@ -36,68 +58,105 @@ const Dashboard = (props) => {
   };
 
   const drawer = (
-    <div>
+    <div className="dashborard-menu">
       <Toolbar />
       <Divider />
 
-      <Link to="/home">
-        <Button variant="contained" sx={{ m: 2 }}>
-          Home
-        </Button>
-      </Link>
-      <Link to={`${url}`}>
-        <Button sx={{ m: 2 }} variant="contained">
-          Dashboard
-        </Button>
-      </Link>
+      <NavLink to={"/home"}>
+        <ListItem button>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Back to Home"} />
+        </ListItem>
+      </NavLink>
+
+      <NavLink to={`${url}`}>
+        <ListItem button>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Dashboard"} />
+        </ListItem>
+      </NavLink>
 
       {admin ? (
         <Box>
-          <Link to={`${url}/addProduct`}>
-            <Button variant="contained" sx={{ my: 1 }}>
-              Add Product
-            </Button>
-          </Link>
-          <Link to={`${url}/manageProducts`}>
-            <Button variant="contained" sx={{ my: 1 }}>
-              Manage Product
-            </Button>
-          </Link>
-          <Link to={`${url}/manageOrders`}>
-            <Button variant="contained" sx={{ my: 1 }}>
-              Manage All Orders
-            </Button>
-          </Link>
-          <Link to={`${url}/makeAdmin`}>
-            <Button variant="contained" sx={{ my: 1 }}>
-              Make an Admin
-            </Button>
-          </Link>
+          <NavLink to={`${url}/addProduct`}>
+            <ListItem button>
+              <ListItemIcon>
+                <AddCircleOutlineRoundedIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Add Product"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to={`${url}/manageProducts`}>
+            <ListItem button>
+              <ListItemIcon>
+                <InventoryIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Manage Product"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to={`${url}/manageOrders`}>
+            <ListItem button>
+              <ListItemIcon>
+                <FlakyIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Manage Orders"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to={`${url}/makeAdmin`}>
+            <ListItem button>
+              <ListItemIcon>
+                <SupervisorAccountIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Make Admin"} />
+            </ListItem>
+          </NavLink>
         </Box>
       ) : (
         <Box>
-          <Link to={`${url}/myOrders`}>
-            <Button variant="contained" sx={{ m: 2 }}>
-              My Orders
-            </Button>
-          </Link>
-          <Link to={`${url}/payment`}>
-            <Button variant="contained" sx={{ m: 2 }}>
-              Payment
-            </Button>
-          </Link>
-          <Link to={`${url}/review`}>
-            <Button variant="contained" sx={{ m: 2 }}>
-              Review Us
-            </Button>
-          </Link>
+          <NavLink to={`${url}/myOrders`}>
+            <ListItem button>
+              <ListItemIcon>
+                <ShoppingBagIcon />
+              </ListItemIcon>
+              <ListItemText primary={"My Orders"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to={`${url}/payment`}>
+            <ListItem button>
+              <ListItemIcon>
+                <PaymentTwoToneIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Payment"} />
+            </ListItem>
+          </NavLink>
+
+          <NavLink to={`${url}/review`}>
+            <ListItem button>
+              <ListItemIcon>
+                <RateReviewOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Review Us"} />
+            </ListItem>
+          </NavLink>
         </Box>
       )}
 
       {user.email && (
-        <button className="btn btn-warning m-2" onClick={logOut}>
-          Logout
-        </button>
+        <ListItem button onClick={logOut}>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+
+          <ListItemText style={{ color: "red" }} primary={"Log Out"} />
+        </ListItem>
       )}
     </div>
   );
@@ -108,6 +167,7 @@ const Dashboard = (props) => {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
+        className="bg-dark"
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -124,17 +184,25 @@ const Dashboard = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            {user.displayName}'s Dashboard
+          <Typography
+            className="dashboard-header"
+            variant="h6"
+            noWrap
+            component="div"
+          >
+            <div>{user.displayName}'s Dashboard</div>
+            {/* <img src={logo} alt="" /> */}
           </Typography>
         </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+
         <Drawer
           container={container}
           variant="temporary"
@@ -181,7 +249,6 @@ const Dashboard = (props) => {
           <Route exact path={path}>
             <DashboardHome></DashboardHome>
           </Route>
-
           <Route path={`${path}/myOrders`}>
             <MyOrders></MyOrders>
           </Route>

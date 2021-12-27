@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import Footer from "../../shared_components/Footer/Footer";
 import Header from "../../shared_components/Header/Header";
 import "./Booking.css";
 
@@ -19,7 +20,7 @@ const Booking = () => {
   const { register, handleSubmit, reset, setValue } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    data.status = "Pending";
+    data.status = `Pending`;
     data.productName = furniture.name;
     axios.post("http://localhost:5000/Orders", data).then((res) => {
       if (res.data.insertedId) {
@@ -41,16 +42,12 @@ const Booking = () => {
       .then((res) => res.json())
       .then((data) => {
         setFurniture(data);
-        // setValue("name", user?.displayName);
-        // setValue("email", user?.email);
-        // setValue("furnitureName", furniture?.name);
-        // setValue("brand", furniture?.brand);
       });
   }, []);
   console.log(furniture);
   return (
     <Box>
-      <Header></Header>
+      <Header />
       <Container className="mb-5">
         <h2 className="text-warning text-center py-5">
           Purchase your dream furniture{" "}
@@ -123,6 +120,7 @@ const Booking = () => {
           </Col>
         </Row>
       </Container>
+      <Footer />
     </Box>
   );
 };

@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import "./Register.css";
 import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
@@ -51,8 +52,8 @@ const Register = () => {
   return (
     <div className="text-center">
       <Header />
-      <Container sx={{ flexGrow: 1, my: 1 }}>
-        <Grid container spacing={2}>
+      <Container sx={{ flexGrow: 1 }}>
+        <Grid container className="register-container" spacing={2}>
           <Grid item xs={12} md={6}>
             <img style={{ width: "100%" }} src={login} alt="" />
           </Grid>

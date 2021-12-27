@@ -38,9 +38,9 @@ const Review = () => {
   //   }, []);
 
   return (
-    <Paper className="review-form" sx={{ mt: 10 }}>
+    <div className="review-form" sx={{ mt: 10 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h4> Give us your details please</h4>
+        <h2 className="my-5"> Please give us your valuable review </h2>
         <input
           value={user.displayName}
           {...register("name", { required: true })}
@@ -58,11 +58,11 @@ const Review = () => {
         />
         <input
           type="submit"
-          className="btn btn-primary review-btn"
+          className="btn btn-warning review-btn"
           value="Review Submit"
         />
       </form>
-    </Paper>
+    </div>
   );
 };
 

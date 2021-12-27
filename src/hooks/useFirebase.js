@@ -116,7 +116,7 @@ const useFirebase = () => {
 
   const saveUserToDatabase = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://shielded-dawn-55052.herokuapp.com/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -127,7 +127,7 @@ const useFirebase = () => {
 
   // getting admin user
   useEffect(() => {
-    fetch(`https://shielded-dawn-55052.herokuapp.com/users/${user.email}`)
+    fetch(`http://localhost:5000/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

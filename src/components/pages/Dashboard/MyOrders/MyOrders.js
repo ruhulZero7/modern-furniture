@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import useAuth from "../../../../hooks/useAuth";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Swal from "sweetalert2";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -49,7 +50,7 @@ const MyOrders = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
         const url = `http://localhost:5000/orders/${id}`;
@@ -59,7 +60,7 @@ const MyOrders = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              Swal.fire("Deleted!", "Your order has been deleted.", "success");
             }
           });
       }
@@ -94,12 +95,12 @@ const MyOrders = () => {
                 <StyledTableCell align="center">{row.phone}</StyledTableCell>
                 <StyledTableCell align="center">{row.status}</StyledTableCell>
                 <StyledTableCell align="center">
-                  <Button
-                    variant="contained"
+                  <button
+                    className="btn btn-danger"
                     onClick={() => handleDeleteOrder(row._id)}
                   >
-                    Cancel Order
-                  </Button>
+                    Cancel Order <CancelOutlinedIcon />
+                  </button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

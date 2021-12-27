@@ -1,22 +1,28 @@
-.add-car form,
+.add-product-container {
+  text-align: center;
+}
+.add-product-form {
+  padding-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 20px;
+}
+.add-product-form form,
 select {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.add-car form input,
-.add-car form select,
+.add-product-form form input,
+.add-product-form form select,
 .description-field {
   width: 40%;
-  margin-top: 20px;
-
+  margin-top: 10px;
   padding: 5px;
-
   outline: 0;
   border: 0;
   border-bottom: 1px solid gray;
 }
 textarea {
-  margin-top: 20px;
+  margin-top: 10px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar, NavLink } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/logo/logo.png";
 import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {

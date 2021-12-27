@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
+import useAuth from "../../../hooks/useAuth";
+import Footer from "../../shared_components/Footer/Footer";
 import Header from "../../shared_components/Header/Header";
 import SingleProduct from "../Home/SingleProduct/SingleProduct";
 import "./AllProduct.css";
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
+  const { isLoading } = useAuth();
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
   return (
     <div>
       <Header />
-      <Container className="product-container">
+      <Container className="product-container mb-5">
         <h2 className="mt-5 uh" style={{ color: "#FF7004" }}>
           OUR ALL PRODUCT
         </h2>
@@ -26,6 +30,7 @@ const AllProducts = () => {
           ))}
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };

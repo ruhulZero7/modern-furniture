@@ -5,6 +5,7 @@ import useAuth from "../../../../hooks/useAuth";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/system";
 import Swal from "sweetalert2";
+import "./MakeAdmin.css";
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://shielded-dawn-55052.herokuapp.com/users/admin", {
+    fetch("http://localhost:5000/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -51,29 +52,31 @@ const MakeAdmin = () => {
     e.preventDefault();
   };
   return (
-    <div>
-      <h2>Make an Admin</h2>
-      <form onSubmit={handleAdminSubmit}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12}>
-              <TextField
-                sx={{ width: "50%" }}
-                label="Email"
-                type="email"
-                name="email"
-                autoComplete="current-password"
-                onBlur={handleOnBlur}
-              />
+    <div className="make-admin-container">
+      <div className="m-5 make-admin-form">
+        <h2 className="text-warning">Make an Admin</h2>
+        <form onSubmit={handleAdminSubmit}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={12} md={12}>
+                <TextField
+                  sx={{ width: "50%" }}
+                  label="Email"
+                  type="email"
+                  name="email"
+                  autoComplete="current-password"
+                  onBlur={handleOnBlur}
+                />
+              </Grid>
+              <Grid item xs={12} sm={12} md={12}>
+                <button type="submit" className="btn btn-warning">
+                  Make Admin
+                </button>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={12}>
-              <Button type="submit" variant="contained">
-                Make Admin
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-      </form>
+          </Box>
+        </form>
+      </div>
     </div>
   );
 };

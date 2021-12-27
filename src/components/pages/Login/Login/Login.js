@@ -37,14 +37,14 @@ const Login = () => {
     e.preventDefault();
   };
   return (
-    <div className="form">
+    <div>
       <Header />
-      <Container sx={{ flexGrow: 1, my: 1 }}>
-        <Grid container spacing={2}>
+      <Container sx={{ flexGrow: 1 }}>
+        <Grid className="login-container" container spacing={2}>
           <Grid item xs={12} md={6}>
             <img style={{ width: "100%" }} src={login} alt="" />
           </Grid>
-          <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+          <Grid className="form" item sx={{ mt: 8 }} xs={12} md={6}>
             <Typography variant="h4" gutterBottom>
               Please Login
             </Typography>

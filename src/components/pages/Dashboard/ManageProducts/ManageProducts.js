@@ -9,8 +9,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Container } from "@mui/material";
 import axios from "axios";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,26 +37,39 @@ const ManageProducts = () => {
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://shielded-dawn-55052.herokuapp.com/cars`)
+    fetch(`http://localhost:5000/products`)
       .then((res) => res.json())
       .then((data) => setproducts(data));
   }, [products]);
 
   // delete order
   const handleDeleteProduct = (id) => {
-    const proceed = window.confirm("Are you sure, you want to delete?");
-    if (proceed) {
-      const url = `https://shielded-dawn-55052.herokuapp.com/cars/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("Product deleted successfully");
-          }
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `http://localhost:5000/products/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your Product has been deleted.",
+                "success"
+              );
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -67,9 +82,12 @@ const ManageProducts = () => {
               <Table sx={{ minWidth: 700 }} aria-label="My products table">
                 <TableHead>
                   <TableRow>
-                    <StyledTableCell align="center">Car Brand</StyledTableCell>
-                    <StyledTableCell align="center">Car Model</StyledTableCell>
-                    <StyledTableCell align="center">Price</StyledTableCell>
+                    <StyledTableCell align="center">Photo</StyledTableCell>
+                    <StyledTableCell align="left">Product Name</StyledTableCell>
+                    <StyledTableCell align="left">Brand</StyledTableCell>
+                    <StyledTableCell align="left">Price</StyledTableCell>
+
+                    <StyledTableCell align="center">Rating</StyledTableCell>
 
                     <StyledTableCell align="center">
                       Delete Product
@@ -79,23 +97,35 @@ const ManageProducts = () => {
                 <TableBody>
                   {products.map((row) => (
                     <StyledTableRow key={row._id}>
+                      <StyledTableCell
+                        style={{ width: "100px" }}
+                        component="th"
+                        scope="row"
+                      >
+                        <img className="img-fluid" src={row.img} alt="" />
+                      </StyledTableCell>
                       <StyledTableCell component="th" scope="row">
-                        {row.brandName}
+                        {row.name}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
-                        {row.model}
+                      <StyledTableCell component="th" scope="row">
+                        {row.brand}
                       </StyledTableCell>
-                      <StyledTableCell align="center">
-                        $ {row.price}
+                      <StyledTableCell component="th" scope="row">
+                        {row.price}
                       </StyledTableCell>
 
                       <StyledTableCell align="center">
-                        <Button
+                        {row.star}
+                      </StyledTableCell>
+
+                      <StyledTableCell align="center">
+                        <button
+                          className="btn btn-danger"
                           variant="contained"
                           onClick={() => handleDeleteProduct(row._id)}
                         >
-                          Delete Product
-                        </Button>
+                          Delete Product <DeleteOutlineOutlinedIcon />
+                        </button>
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}

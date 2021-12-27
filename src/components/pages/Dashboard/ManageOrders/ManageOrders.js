@@ -11,6 +11,8 @@ import { Button, Container } from "@mui/material";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import Swal from "sweetalert2";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,38 +37,47 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://shielded-dawn-55052.herokuapp.com/orders`)
+    fetch(`http://localhost:5000/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
 
   // delete order
   const handleDeleteOrder = (id) => {
-    const proceed = window.confirm("Are you sure, you want to delete?");
-    if (proceed) {
-      const url = `https://shielded-dawn-55052.herokuapp.com/orders/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("Order deleted successfully");
-          }
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = `http://localhost:5000/orders/${id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Order has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
 
   // update order
   const handleUpdateStatus = (id) => {
     axios
-      .put(`https://shielded-dawn-55052.herokuapp.com/orders/${id}`, {
+      .put(`http://localhost:5000/orders/${id}`, {
         status: "Approved",
       })
       .then((res) => {
         console.log(res);
         if (res.data.matchedCount > 0) {
-          alert("Order Approved !");
+          Swal.fire("Approved!", "Order has been Approved.", "success");
         }
       })
       .catch((err) => {
@@ -120,12 +131,12 @@ const ManageOrders = () => {
                         </Button>
                       </StyledTableCell>
                       <StyledTableCell align="center">
-                        <Button
-                          variant="contained"
+                        <button
+                          className="btn btn-danger"
                           onClick={() => handleDeleteOrder(row._id)}
                         >
-                          Cancel Order
-                        </Button>
+                          Cancel Order <CancelOutlinedIcon />
+                        </button>
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}
