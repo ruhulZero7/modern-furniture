@@ -6,27 +6,26 @@ import useAuth from "../../../../hooks/useAuth";
 import { Paper } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Maximize } from "@mui/icons-material";
 
 const Review = () => {
   const { user } = useAuth();
   const [reviews, setReviews] = useState({});
   const { register, handleSubmit, reset, setValue } = useForm();
   const onSubmit = (data) => {
-    axios
-      .post("https://shielded-dawn-55052.herokuapp.com/reviews", data)
-      .then((res) => {
-        if (res.data.insertedId) {
-          // order successfull modal
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Thanks for review us",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          reset();
-        }
-      });
+    axios.post("http://localhost:5000/reviews", data).then((res) => {
+      if (res.data.insertedId) {
+        // order successfull modal
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Thanks for review us",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        reset();
+      }
+    });
   };
 
   //   useEffect(() => {
