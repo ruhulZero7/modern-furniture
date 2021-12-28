@@ -1,11 +1,6 @@
-import {
-  Button,
-  Container,
-  Grid,
-  LinearProgress,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+
+import GoogleIcon from "@mui/icons-material/Google";
 import "./Register.css";
 import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
@@ -15,6 +10,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../../hooks/useAuth";
 import login from "../../../../images/login/login.svg";
 import Header from "../../../shared_components/Header/Header";
+import Footer from "../../../shared_components/Footer/Footer";
 
 const Register = () => {
   const [loginData, setLoginData] = useState({});
@@ -53,7 +49,7 @@ const Register = () => {
     <div className="text-center">
       <Header />
       <Container sx={{ flexGrow: 1 }}>
-        <Grid container className="register-container" spacing={2}>
+        <Grid container className="register-container mb-5" spacing={2}>
           <Grid item xs={12} md={6}>
             <img style={{ width: "100%" }} src={login} alt="" />
           </Grid>
@@ -113,9 +109,9 @@ const Register = () => {
                 </NavLink>
                 <Typography variant="h6">OR</Typography>
 
-                <Button onClick={handleGoogleLogin} variant="contained">
-                  Sign in with google
-                </Button>
+                <button onClick={handleGoogleLogin} className="btn btn-warning">
+                  <GoogleIcon /> Sign in with google
+                </button>
               </form>
             )}
 

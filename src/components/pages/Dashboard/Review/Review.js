@@ -10,23 +10,25 @@ const Review = () => {
   const [reviews, setReviews] = useState({});
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/reviews", data).then((res) => {
-      if (res.data.insertedId) {
-        // order successfull modal
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Thanks for review us",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        reset();
-      }
-    });
+    axios
+      .post("https://murmuring-ravine-72524.herokuapp.com/reviews", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          // order successfull modal
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thanks for review us",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+        }
+      });
   };
 
   return (
-    <div className="review-form" sx={{ mt: 10 }}>
+    <div className="review-form pb-5" sx={{ mt: 10 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="my-5"> Please give us your valuable review </h2>
         <input

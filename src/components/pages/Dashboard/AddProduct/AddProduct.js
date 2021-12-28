@@ -9,18 +9,20 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios.post("http://localhost:5000/products", data).then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Product Added Successfully",
-          showConfirmButton: true,
-        });
+    axios
+      .post("https://murmuring-ravine-72524.herokuapp.com/products", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product Added Successfully",
+            showConfirmButton: true,
+          });
 
-        reset();
-      }
-    });
+          reset();
+        }
+      });
   };
   return (
     <Container className="add-product-container">

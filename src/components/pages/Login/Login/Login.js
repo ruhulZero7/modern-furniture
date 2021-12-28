@@ -9,6 +9,8 @@ import "./Login.css";
 import login from "../../../../images/login/login.svg";
 import useAuth from "../../../../hooks/useAuth";
 import { Spinner } from "react-bootstrap";
+import GoogleIcon from "@mui/icons-material/Google";
+import Footer from "../../../shared_components/Footer/Footer";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -40,7 +42,7 @@ const Login = () => {
     <div>
       <Header />
       <Container sx={{ flexGrow: 1 }}>
-        <Grid className="login-container" container spacing={2}>
+        <Grid className="login-container mb-5" container spacing={2}>
           <Grid item xs={12} md={6}>
             <img style={{ width: "100%" }} src={login} alt="" />
           </Grid>
@@ -80,9 +82,9 @@ const Login = () => {
                 </NavLink>
                 <Typography variant="h6">OR</Typography>
 
-                <Button onClick={handleGoogleLogin} variant="contained">
-                  Sign in with google
-                </Button>
+                <button onClick={handleGoogleLogin} className="btn btn-warning">
+                  <GoogleIcon /> Sign in with google
+                </button>
               </form>
             )}
 

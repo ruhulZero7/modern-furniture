@@ -1,9 +1,10 @@
 import React from "react";
+import "./Payment.css";
 
 const Payment = () => {
   return (
-    <div>
-      <h1>Payment system coming soon...</h1>
+    <div className="payment-container">
+      <h1 className="payment-form">Payment system coming soon...</h1>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const AllProducts = () => {
   const { isLoading } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://murmuring-ravine-72524.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

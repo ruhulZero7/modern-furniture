@@ -36,7 +36,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${user.email}`)
+    fetch(`https://murmuring-ravine-72524.herokuapp.com/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -53,7 +53,7 @@ const MyOrders = () => {
       confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://murmuring-ravine-72524.herokuapp.com/orders/${id}`;
         fetch(url, {
           method: "DELETE",
         })

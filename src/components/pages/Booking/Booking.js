@@ -21,23 +21,27 @@ const Booking = () => {
     console.log(data);
     data.status = `Pending`;
     data.productName = furniture.name;
-    axios.post("http://localhost:5000/Orders", data).then((res) => {
-      if (res.data.insertedId) {
-        // order successfull modal
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Order Successfull",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        reset();
-      }
-    });
+    axios
+      .post("https://murmuring-ravine-72524.herokuapp.com/Orders", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          // order successfull modal
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Order Successfull",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+        }
+      });
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${furnitureId}`)
+    fetch(
+      `https://murmuring-ravine-72524.herokuapp.com/products/${furnitureId}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setFurniture(data);
@@ -53,7 +57,7 @@ const Booking = () => {
         </h2>
         <Row md={2} sm={1} xs={1} className="purchase-furniture-container">
           <Col className="col-md-7 mb-3 furniture-detail-info">
-            <Row className="furniture-detail-container">
+            <Row md={2} sm={1} xs={1} className="furniture-detail-container">
               <Col className="text-center  col-md-5 ">
                 <img
                   src={furniture?.img}

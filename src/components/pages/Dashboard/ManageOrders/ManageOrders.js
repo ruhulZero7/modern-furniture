@@ -37,7 +37,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders`)
+    fetch(`https://murmuring-ravine-72524.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -54,7 +54,7 @@ const ManageOrders = () => {
       confirmButtonText: "Yes, Delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `https://murmuring-ravine-72524.herokuapp.com/orders/${id}`;
         fetch(url, {
           method: "DELETE",
         })
@@ -71,7 +71,7 @@ const ManageOrders = () => {
   // update order
   const handleUpdateStatus = (id) => {
     axios
-      .put(`http://localhost:5000/orders/${id}`, {
+      .put(`https://murmuring-ravine-72524.herokuapp.com/orders/${id}`, {
         status: "Approved",
       })
       .then((res) => {

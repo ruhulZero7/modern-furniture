@@ -36,7 +36,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-        errorModal();
+        errorModal(error.message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -60,7 +60,7 @@ const useFirebase = () => {
           })
           .catch((error) => {
             setError(error.message);
-            errorModal();
+            errorModal(error.message);
           });
 
         history.push("/");
@@ -68,7 +68,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-        errorModal();
+        errorModal(error.message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -83,7 +83,7 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-        errorModal();
+        errorModal(error.message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -99,7 +99,7 @@ const useFirebase = () => {
       setIsLoading(false);
     });
     return () => unsubscribe;
-  }, []);
+  }, [auth]);
 
   const logOut = () => {
     setIsLoading(true);
@@ -109,14 +109,14 @@ const useFirebase = () => {
       })
       .catch((error) => {
         setError(error.message);
-        errorModal();
+        errorModal(error.message);
       })
       .finally(() => setIsLoading(false));
   };
 
   const saveUserToDatabase = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch("https://murmuring-ravine-72524.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -127,7 +127,7 @@ const useFirebase = () => {
 
   // getting admin user
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://murmuring-ravine-72524.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -162,11 +162,11 @@ const useFirebase = () => {
     });
   };
 
-  const errorModal = () => {
+  const errorModal = (e) => {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: `${error}`,
+      text: `${e}`,
     });
   };
 
