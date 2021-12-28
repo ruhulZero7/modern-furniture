@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Project Name: Modern Furniture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project client site hosting at Firebase and server site hosting at Heroku.
+Live Site in [This Link](https://car-world-97a18.web.app/).
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+This is a furniture showroom website. There are three pages on the website, these are Home page, the All products page, and the Dashboard page. But initially showing only two pages. When a user login or create an account on this website, the Dashboard option will be available for the user. The Dashboard page has some nested route based on Admin User and Normal User. There are two types of user login systems, using email/password and using a google account with Firebase Authentication system.
 
-### `npm start`
+## Key Fetures
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Normal User Can
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Register and log in
+- Place order (user must be logged in)
+- View his orders history ( in the dashboard )
+- Give a Review ( in the dashboard )
+- Delete or cancel his order ( in the dashboard )
+- Log out
 
-### `npm test`
+### Admin User Can
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Manage all the order place by customer ( in dashboard )
+- Update the status of an order ( in dashboard )
+- Upload new product to site ( in dashboard )
+- Add another Admin ( in dashboard )
+  for adding a admin he must have to register first then the admin can promote to admin otherwise not.... ( Registration is mandatory )
 
-### `npm run build`
+## Used Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- HTML
+- CSS
+- JavaScript
+- CSS framework: React-Bootstrap and Meterial UI
+- React for fronted
+- Node js for Backend
+- MongoDB for Database
+- Firebase for Authentication
+- React Router Dom for routing
+- React Hook form for implement and handle input fields
+- React star Ratings for showing dynamic star in review
+- axios for handle rest api
+- bootstrap and Mateiral UI for User Interface
+- SweetAlert2 for amazing modal
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## If you would like to explore more, please feel free to log in as a Admin. (email:admin@admin.com)(Pass:123456)
