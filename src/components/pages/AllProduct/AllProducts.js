@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import useAuth from "../../../hooks/useAuth";
 import Footer from "../../shared_components/Footer/Footer";
 import Header from "../../shared_components/Header/Header";

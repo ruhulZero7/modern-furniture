@@ -16,7 +16,7 @@ const Booking = () => {
   const { furnitureId } = useParams();
   const [furniture, setFurniture] = useState({});
 
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     data.status = `Pending`;

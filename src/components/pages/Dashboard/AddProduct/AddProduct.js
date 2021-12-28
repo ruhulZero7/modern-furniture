@@ -26,8 +26,8 @@ const AddProduct = () => {
   };
   return (
     <Container className="add-product-container">
-      <div className="add-product-form">
-        <h2 className="text-warning pt-2">Add a new product</h2>
+      <div className="add-product-form pb-5">
+        <h2 className="text-warning pt-4">Add a new product</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             {...register("name", { required: true, maxLength: 50 })}
