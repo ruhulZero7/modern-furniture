@@ -8,36 +8,34 @@ const Achievement = () => {
       <Container>
         <div className="row py-5">
           <div className="col-lg-3 col-md-6 col-sm-6 col-12 bb">
-            <h1 className="text-warning">23</h1>
-            <h4 className="text-white my-4 p-2 rounded">Year Of Experience</h4>
-            <p className="achievement-text">
-              We have 23 year of Experience in thid field. And so far we are
-              successful.
-            </p>
+            <h1 className="text-warning text-center">
+              <i class="fas fa-laptop-house"></i>
+            </h1>
+            <h4 className="text-white my-4 p-2 rounded">
+              21 Year Of Experience
+            </h4>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-            <h1 className="text-warning">59</h1>
-            <h4 className="text-white my-4 p-2 rounded">Numbers Engineer</h4>
-            <p className="achievement-text">
-              We have lot of Experienced engineers. They always try to help you
-              better.{" "}
-            </p>
+            <h1 className="text-warning text-center">
+              <i class="fas fa-drafting-compass "></i>
+            </h1>
+            <h4 className="text-white my-4 p-2 rounded">67 Numbers Engineer</h4>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-            <h1 className="text-warning">15</h1>
-            <h4 className="text-white my-4 p-2 rounded">Professional Awards</h4>
-            <p className="achievement-text">
-              So far we have 15 Professional award as a best car selling
-              organization !
-            </p>
+            <h1 className="text-warning text-center">
+              <i class="fas fa-trophy"></i>
+            </h1>
+            <h4 className="text-white my-4 p-2 rounded">
+              15 Professional Awards
+            </h4>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
-            <h1 className="text-warning">100%</h1>
-            <h4 className="text-white my-4 p-2 rounded">Satisfied Clients</h4>
-            <p className="achievement-text">
-              Our clients are satisfied with us. We are proud to be a part of
-              your nice journey!
-            </p>
+            <h1 className="text-warning text-center">
+              <i class="fas fa-grin-hearts"></i>
+            </h1>
+            <h4 className="text-white my-4 p-2 rounded">
+              100% Satisfied Clients
+            </h4>
           </div>
         </div>
       </Container>

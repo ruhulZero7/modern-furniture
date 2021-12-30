@@ -1,5 +1,5 @@
 footer {
-  background-color: #030a0a;
+  background-color: #212529;
   text-align: center;
   color: #666;
 }
@@ -26,6 +26,7 @@ footer {
 }
 .usefull-links ul li {
   list-style: none;
+  line-height: 40px;
 }
 .recent-post a,
 .usefull-links ul li a {
@@ -44,4 +45,13 @@ footer {
   margin-right: 20px;
   padding-top: 10px;
   border: 1px solid white;
+}
+
+.get-int-ouch-inner {
+  display: flex;
+  column-gap: 15px;
+}
+.get-int-ouch-main input,
+#floatingTextarea {
+  background-color: transparent;
 }
