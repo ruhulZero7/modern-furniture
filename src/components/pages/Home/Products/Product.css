@@ -3,3 +3,12 @@
   padding-left: 10px;
   color: #ff7004;
 }
+
+#spinner {
+  display: flex;
+  justify-content: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 200px;
+}

@@ -16,17 +16,36 @@ const AllProducts = () => {
       .then((data) => setProducts(data));
   }, []);
 
+
   return (
     <div>
       <Header />
       <Container className="product-container mb-5">
         <h2 className="mt-5 border-lf">OUR ALL PRODUCT</h2>
-        <div className="underline mb-5"></div>
-        <Row lg={2} md={2} sm={2} xs={1} className="g-4">
-          {products.map((product) => (
-            <SingleProduct key={product.key} product={product}></SingleProduct>
-          ))}
-        </Row>
+        {products.length ? (
+          <div>
+            <div className="underline mb-5"></div>
+            <Row lg={2} md={2} sm={2} xs={1} className="g-4">
+              {products.map((product) => (
+                <SingleProduct
+                  key={product.key}
+                  product={product}
+                ></SingleProduct>
+              ))}
+            </Row>
+          </div>
+        ) : (
+          <div id="spinner">
+            <button class="btn btn-warning spinner-btn" type="button" disabled>
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Loading...
+            </button>
+          </div>
+        )}
       </Container>
       <Footer />
     </div>
