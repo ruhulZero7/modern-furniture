@@ -1,17 +1,17 @@
 import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
+  getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
-  updateProfile,
+  signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
-} from "firebase/auth";
+  updateProfile,
+} from 'firebase/auth';
 
-import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import initializeFirebase from "../components/pages/Login/Firebase/firebase.init";
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import initializeFirebase from '../components/pages/Login/Firebase/firebase.init';
 
 initializeFirebase();
 
@@ -29,10 +29,10 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        const uri = location?.state?.from || "/";
+        const uri = location?.state?.from || '/';
         history.push(uri);
         logInModal();
-        saveUserToDatabase(user.email, user.displayName, "PUT");
+        saveUserToDatabase(user.email, user.displayName, 'PUT');
       })
       .catch((error) => {
         setError(error.message);
@@ -49,7 +49,7 @@ const useFirebase = () => {
         setUser(newUser);
         // save user to the database
 
-        saveUserToDatabase(email, name, "POST");
+        saveUserToDatabase(email, name, 'POST');
 
         //  send name to firebase after creation
         updateProfile(auth.currentUser, {
@@ -63,7 +63,7 @@ const useFirebase = () => {
             errorModal(error.message);
           });
 
-        history.push("/");
+        history.push('/');
         registrationModal();
       })
       .catch((error) => {
@@ -77,7 +77,7 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const uri = location?.state?.from || "/";
+        const uri = location?.state?.from || '/';
         history.push(uri);
         logInModal();
       })
@@ -116,10 +116,10 @@ const useFirebase = () => {
 
   const saveUserToDatabase = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://murmuring-ravine-72524.herokuapp.com/users", {
+    fetch('https://modern-furniture-server.vercel.app/users', {
       method: method,
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(user),
     }).then();
@@ -127,16 +127,16 @@ const useFirebase = () => {
 
   // getting admin user
   useEffect(() => {
-    fetch(`https://murmuring-ravine-72524.herokuapp.com/users/${user.email}`)
+    fetch(`https://modern-furniture-server.vercel.app/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
 
   const registrationModal = () => {
     Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Registration Successfull",
+      position: 'center',
+      icon: 'success',
+      title: 'Registration Successfull',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -144,9 +144,9 @@ const useFirebase = () => {
 
   const logInModal = () => {
     Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Login Successfull",
+      position: 'center',
+      icon: 'success',
+      title: 'Login Successfull',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -154,9 +154,9 @@ const useFirebase = () => {
 
   const logOutModal = () => {
     Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Logout Successfull",
+      position: 'center',
+      icon: 'success',
+      title: 'Logout Successfull',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -164,8 +164,8 @@ const useFirebase = () => {
 
   const errorModal = (e) => {
     Swal.fire({
-      icon: "error",
-      title: "Oops...",
+      icon: 'error',
+      title: 'Oops...',
       text: `${e}`,
     });
   };

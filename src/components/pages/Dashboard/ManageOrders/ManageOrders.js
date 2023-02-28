@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Button, Container } from "@mui/material";
-import axios from "axios";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import Swal from "sweetalert2";
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import { Button, Container } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -24,11 +24,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
+  '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  "&:last-child td, &:last-child th": {
+  '&:last-child td, &:last-child th': {
     border: 0,
   },
 }));
@@ -37,7 +37,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://murmuring-ravine-72524.herokuapp.com/orders`)
+    fetch(`https://modern-furniture-server.vercel.app/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -45,23 +45,23 @@ const ManageOrders = () => {
   // delete order
   const handleDeleteOrder = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Delete it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://murmuring-ravine-72524.herokuapp.com/orders/${id}`;
+        const url = `https://modern-furniture-server.vercel.app/orders/${id}`;
         fetch(url, {
-          method: "DELETE",
+          method: 'DELETE',
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Order has been deleted.", "success");
+              Swal.fire('Deleted!', 'Order has been deleted.', 'success');
             }
           });
       }
@@ -71,13 +71,13 @@ const ManageOrders = () => {
   // update order
   const handleUpdateStatus = (id) => {
     axios
-      .put(`https://murmuring-ravine-72524.herokuapp.com/orders/${id}`, {
-        status: "Approved",
+      .put(`https://modern-furniture-server.vercel.app/orders/${id}`, {
+        status: 'Approved',
       })
       .then((res) => {
         console.log(res);
         if (res.data.matchedCount > 0) {
-          Swal.fire("Approved!", "Order has been Approved.", "success");
+          Swal.fire('Approved!', 'Order has been Approved.', 'success');
         }
       })
       .catch((err) => {

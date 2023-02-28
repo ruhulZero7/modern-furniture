@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
-import useAuth from "../../../../hooks/useAuth";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import Swal from "sweetalert2";
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Swal from 'sweetalert2';
+import useAuth from '../../../../hooks/useAuth';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -22,11 +21,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
+  '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  "&:last-child td, &:last-child th": {
+  '&:last-child td, &:last-child th': {
     border: 0,
   },
 }));
@@ -36,7 +35,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://murmuring-ravine-72524.herokuapp.com/orders/${user.email}`)
+    fetch(`https://modern-furniture-server.vercel.app/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -44,23 +43,23 @@ const MyOrders = () => {
   // delete order
   const handleDeleteOrder = (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Cancel it!",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://murmuring-ravine-72524.herokuapp.com/orders/${id}`;
+        const url = `https://modern-furniture-server.vercel.app/orders/${id}`;
         fetch(url, {
-          method: "DELETE",
+          method: 'DELETE',
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your order has been deleted.", "success");
+              Swal.fire('Deleted!', 'Your order has been deleted.', 'success');
             }
           });
       }

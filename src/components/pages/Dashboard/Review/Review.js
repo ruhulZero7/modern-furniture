@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import "./Review.css";
-import { useForm } from "react-hook-form";
-import useAuth from "../../../../hooks/useAuth";
-import axios from "axios";
-import Swal from "sweetalert2";
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import useAuth from '../../../../hooks/useAuth';
+import './Review.css';
 
 const Review = () => {
   const { user } = useAuth();
@@ -11,14 +11,14 @@ const Review = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("https://murmuring-ravine-72524.herokuapp.com/reviews", data)
+      .post('https://modern-furniture-server.vercel.app/reviews', data)
       .then((res) => {
         if (res.data.insertedId) {
           // order successfull modal
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Thanks for review us",
+            position: 'center',
+            icon: 'success',
+            title: 'Thanks for review us',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -33,17 +33,17 @@ const Review = () => {
         <h2 className="my-5"> Please give us your valuable review </h2>
         <input
           value={user.displayName}
-          {...register("name", { required: true })}
+          {...register('name', { required: true })}
           placeholder="Your Name"
         />
         <input
           type="number"
-          {...register("rating")}
+          {...register('rating')}
           placeholder="Rating Must Between 1-5"
         />
         <textarea
           className="textarea-field"
-          {...register("comment", { required: true })}
+          {...register('comment', { required: true })}
           placeholder="Write Your Comment"
         />
         <input

@@ -1,14 +1,13 @@
-import { TextField } from "@mui/material";
-import Button from "@mui/material/Button";
-import React, { useState } from "react";
-import useAuth from "../../../../hooks/useAuth";
-import Grid from "@mui/material/Grid";
-import { Box } from "@mui/system";
-import Swal from "sweetalert2";
-import "./MakeAdmin.css";
+import { TextField } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { Box } from '@mui/system';
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import useAuth from '../../../../hooks/useAuth';
+import './MakeAdmin.css';
 
 const MakeAdmin = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const { token } = useAuth();
 
   const handleOnBlur = (e) => {
@@ -16,10 +15,10 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch("https://murmuring-ravine-72524.herokuapp.com/users/admin", {
-      method: "PUT",
+    fetch('https://modern-furniture-server.vercel.app/users/admin', {
+      method: 'PUT',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(user),
     })
@@ -27,13 +26,13 @@ const MakeAdmin = () => {
       .then((data) => {
         if (data.modifiedCount) {
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Made Admin Successfull",
+            position: 'center',
+            icon: 'success',
+            title: 'Made Admin Successfull',
             showConfirmButton: false,
             timer: 1500,
           });
-          setEmail("");
+          setEmail('');
         }
         if (data.modifiedCount === 0 && data.matchedCount === 1) {
           Swal.fire({
@@ -42,8 +41,8 @@ const MakeAdmin = () => {
         }
         if (data.modifiedCount === 0 && data.matchedCount === 0) {
           Swal.fire({
-            icon: "error",
-            title: "Oops...",
+            icon: 'error',
+            title: 'Oops...',
             text: `User not found`,
           });
         }
@@ -60,7 +59,7 @@ const MakeAdmin = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={12}>
                 <TextField
-                  sx={{ width: "50%" }}
+                  sx={{ width: '50%' }}
                   label="Email"
                   type="email"
                   name="email"

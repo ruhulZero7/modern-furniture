@@ -1,20 +1,30 @@
-import React from "react";
-import "./Product.css";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Container, Row } from "react-bootstrap";
-import SingleProduct from "../SingleProduct/SingleProduct";
-import { Link } from "react-router-dom";
-import useAuth from "../../../../hooks/useAuth";
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import SingleProduct from '../SingleProduct/SingleProduct';
+import './Product.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://murmuring-ravine-72524.herokuapp.com/products")
+    fetch('https://modern-furniture-server.vercel.app/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  // const v = fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
+  //   res.json()
+  // );
+
+  // console.log(v);
+
+  // function f() {
+  //   const res = fetch("https://modern-furniture-server.vercel.app/products");
+  //   const data = res.json();
+  //   setProducts(data);
+  // }
+  // f();
 
   return (
     <Container className="product-container">

@@ -1,15 +1,15 @@
-import { Box } from "@mui/system";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import Rating from "react-rating";
-import { useParams } from "react-router-dom";
-import Swal from "sweetalert2";
-import useAuth from "../../../hooks/useAuth";
-import Footer from "../../shared_components/Footer/Footer";
-import Header from "../../shared_components/Header/Header";
-import "./Booking.css";
+import { Box } from '@mui/system';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import Rating from 'react-rating';
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
+import Footer from '../../shared_components/Footer/Footer';
+import Header from '../../shared_components/Header/Header';
+import './Booking.css';
 
 const Booking = () => {
   const { user, isLoading } = useAuth();
@@ -22,14 +22,14 @@ const Booking = () => {
     data.status = `Pending`;
     data.productName = furniture.name;
     axios
-      .post("https://murmuring-ravine-72524.herokuapp.com/Orders", data)
+      .post('https://modern-furniture-server.vercel.app/orders', data)
       .then((res) => {
         if (res.data.insertedId) {
           // order successfull modal
           Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Order Successfull",
+            position: 'center',
+            icon: 'success',
+            title: 'Order Successfull',
             showConfirmButton: false,
             timer: 1500,
           });
@@ -39,9 +39,7 @@ const Booking = () => {
   };
 
   useEffect(() => {
-    fetch(
-      `https://murmuring-ravine-72524.herokuapp.com/products/${furnitureId}`
-    )
+    fetch(`https://modern-furniture-server.vercel.app/products/${furnitureId}`)
       .then((res) => res.json())
       .then((data) => {
         setFurniture(data);
@@ -53,7 +51,7 @@ const Booking = () => {
       <Header />
       <Container className="mb-5">
         <h2 className="text-warning text-center py-5">
-          Purchase your dream furniture{" "}
+          Purchase your dream furniture{' '}
         </h2>
         <Row md={2} sm={1} xs={1} className="purchase-furniture-container">
           <Col className="col-md-7 mb-3 furniture-detail-info">
@@ -95,23 +93,23 @@ const Booking = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 defaultValue={user?.displayName}
-                {...register("name", { required: true })}
+                {...register('name', { required: true })}
                 placeholder="Your Name"
               />
               <input
                 defaultValue={user?.email}
-                {...register("email", { required: true })}
+                {...register('email', { required: true })}
                 placeholder="Your Email"
               />
 
               <textarea
                 className="address-field"
-                {...register("address", { required: true, maxLength: 100 })}
+                {...register('address', { required: true, maxLength: 100 })}
                 placeholder="Your Address"
               />
               <input
                 type="number"
-                {...register("phone")}
+                {...register('phone')}
                 placeholder="Phone Number"
               />
               <input

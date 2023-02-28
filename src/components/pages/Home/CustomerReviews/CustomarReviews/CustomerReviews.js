@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
-import SingleReview from "../SingleReview/SingleReview";
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import SingleReview from '../SingleReview/SingleReview';
 
 const CustomerReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://murmuring-ravine-72524.herokuapp.com/reviews`)
+    fetch(`https://modern-furniture-server.vercel.app/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
