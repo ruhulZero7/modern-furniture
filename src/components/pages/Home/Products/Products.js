@@ -48,9 +48,13 @@ const Products = () => {
         </div>
       ) : (
         <div id="spinner">
-          <button class="btn btn-warning spinner-btn" type="button" disabled>
+          <button
+            className="btn btn-warning spinner-btn"
+            type="button"
+            disabled
+          >
             <span
-              class="spinner-border spinner-border-sm"
+              className="spinner-border spinner-border-sm"
               role="status"
               aria-hidden="true"
             ></span>

@@ -1,6 +1,6 @@
-import React from "react";
-import "./Achievement.css";
-import { Container } from "react-bootstrap";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import './Achievement.css';
 
 const Achievement = () => {
   return (
@@ -9,7 +9,7 @@ const Achievement = () => {
         <div className="row py-5">
           <div className="col-lg-3 col-md-6 col-sm-6 col-12 bb">
             <h1 className="text-warning text-center">
-              <i class="fas fa-laptop-house"></i>
+              <i className="fas fa-laptop-house"></i>
             </h1>
             <h4 className="text-white my-4 p-2 rounded">
               21 Year Of Experience
@@ -17,13 +17,13 @@ const Achievement = () => {
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
             <h1 className="text-warning text-center">
-              <i class="fas fa-drafting-compass "></i>
+              <i className="fas fa-drafting-compass "></i>
             </h1>
             <h4 className="text-white my-4 p-2 rounded">67 Numbers Engineer</h4>
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
             <h1 className="text-warning text-center">
-              <i class="fas fa-trophy"></i>
+              <i className="fas fa-trophy"></i>
             </h1>
             <h4 className="text-white my-4 p-2 rounded">
               15 Professional Awards
@@ -31,7 +31,7 @@ const Achievement = () => {
           </div>
           <div className="col-lg-3 col-md-6 col-sm-6 col-12">
             <h1 className="text-warning text-center">
-              <i class="fas fa-grin-hearts"></i>
+              <i className="fas fa-grin-hearts"></i>
             </h1>
             <h4 className="text-white my-4 p-2 rounded">
               100% Satisfied Clients

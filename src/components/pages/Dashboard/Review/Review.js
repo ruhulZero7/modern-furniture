@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../hooks/useAuth';
@@ -7,7 +7,6 @@ import './Review.css';
 
 const Review = () => {
   const { user } = useAuth();
-  const [reviews, setReviews] = useState({});
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios

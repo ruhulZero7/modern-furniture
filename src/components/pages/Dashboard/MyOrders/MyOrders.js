@@ -38,7 +38,7 @@ const MyOrders = () => {
     fetch(`https://modern-furniture-server.vercel.app/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, [orders]);
+  }, [orders, user]);
 
   // delete order
   const handleDeleteOrder = (id) => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import useAuth from '../../../hooks/useAuth';
 import Footer from '../../shared_components/Footer/Footer';
 import Header from '../../shared_components/Header/Header';
 import SingleProduct from '../Home/SingleProduct/SingleProduct';
@@ -8,7 +7,7 @@ import './AllProduct.css';
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
-  const { isLoading } = useAuth();
+  console.log(products);
 
   useEffect(() => {
     fetch('https://modern-furniture-server.vercel.app/products')
@@ -35,9 +34,13 @@ const AllProducts = () => {
           </div>
         ) : (
           <div id="spinner">
-            <button class="btn btn-warning spinner-btn" type="button" disabled>
+            <button
+              className="btn btn-warning spinner-btn"
+              type="button"
+              disabled
+            >
               <span
-                class="spinner-border spinner-border-sm"
+                className="spinner-border spinner-border-sm"
                 role="status"
                 aria-hidden="true"
               ></span>

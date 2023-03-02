@@ -3,12 +3,10 @@ import Grid from '@mui/material/Grid';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import useAuth from '../../../../hooks/useAuth';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
   const [email, setEmail] = useState('');
-  const { token } = useAuth();
 
   const handleOnBlur = (e) => {
     setEmail(e.target.value);

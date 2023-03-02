@@ -12,7 +12,7 @@ import Header from '../../shared_components/Header/Header';
 import './Booking.css';
 
 const Booking = () => {
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
   const { furnitureId } = useParams();
   const [furniture, setFurniture] = useState({});
 
@@ -44,7 +44,7 @@ const Booking = () => {
       .then((data) => {
         setFurniture(data);
       });
-  }, []);
+  }, [furnitureId, furniture]);
 
   return (
     <Box>
