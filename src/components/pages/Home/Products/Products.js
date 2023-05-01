@@ -8,7 +8,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('https://modern-furniture-server.vercel.app/products')
+    fetch('https://modern-furniture-server.onrender.com/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -20,7 +20,7 @@ const Products = () => {
   // console.log(v);
 
   // function f() {
-  //   const res = fetch("https://modern-furniture-server.vercel.app/products");
+  //   const res = fetch("https://modern-furniture-server.onrender.com/products");
   //   const data = res.json();
   //   setProducts(data);
   // }

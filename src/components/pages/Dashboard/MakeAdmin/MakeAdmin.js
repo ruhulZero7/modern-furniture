@@ -13,7 +13,7 @@ const MakeAdmin = () => {
   };
   const handleAdminSubmit = (e) => {
     const user = { email };
-    fetch('https://modern-furniture-server.vercel.app/users/admin', {
+    fetch('https://modern-furniture-server.onrender.com/users/admin', {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',

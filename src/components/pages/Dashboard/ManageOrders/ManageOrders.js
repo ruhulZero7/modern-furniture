@@ -37,7 +37,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/orders`)
+    fetch(`https://modern-furniture-server.onrender.com/orders`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders]);
@@ -54,7 +54,7 @@ const ManageOrders = () => {
       confirmButtonText: 'Yes, Delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://modern-furniture-server.vercel.app/orders/${id}`;
+        const url = `https://modern-furniture-server.onrender.com/orders/${id}`;
         fetch(url, {
           method: 'DELETE',
         })
@@ -71,7 +71,7 @@ const ManageOrders = () => {
   // update order
   const handleUpdateStatus = (id) => {
     axios
-      .put(`https://modern-furniture-server.vercel.app/orders/${id}`, {
+      .put(`https://modern-furniture-server.onrender.com/orders/${id}`, {
         status: 'Approved',
       })
       .then((res) => {

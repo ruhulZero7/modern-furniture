@@ -10,7 +10,7 @@ const Review = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     axios
-      .post('https://modern-furniture-server.vercel.app/reviews', data)
+      .post('https://modern-furniture-server.onrender.com/reviews', data)
       .then((res) => {
         if (res.data.insertedId) {
           // order successfull modal

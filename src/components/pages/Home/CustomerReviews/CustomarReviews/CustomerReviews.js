@@ -6,7 +6,7 @@ const CustomerReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/reviews`)
+    fetch(`https://modern-furniture-server.onrender.com/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

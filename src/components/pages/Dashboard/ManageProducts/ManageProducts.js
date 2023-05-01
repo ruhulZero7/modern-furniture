@@ -36,7 +36,7 @@ const ManageProducts = () => {
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/products`)
+    fetch(`https://modern-furniture-server.onrender.com/products`)
       .then((res) => res.json())
       .then((data) => setproducts(data));
   }, [products]);
@@ -53,7 +53,7 @@ const ManageProducts = () => {
       confirmButtonText: 'Yes, Delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://modern-furniture-server.vercel.app/products/${id}`;
+        const url = `https://modern-furniture-server.onrender.com/products/${id}`;
         fetch(url, {
           method: 'DELETE',
         })

@@ -10,7 +10,7 @@ const AddProduct = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post('https://modern-furniture-server.vercel.app/products', data)
+      .post('https://modern-furniture-server.onrender.com/products', data)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

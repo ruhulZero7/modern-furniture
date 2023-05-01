@@ -22,7 +22,7 @@ const Booking = () => {
     data.status = `Pending`;
     data.productName = furniture.name;
     axios
-      .post('https://modern-furniture-server.vercel.app/orders', data)
+      .post('https://modern-furniture-server.onrender.com/orders', data)
       .then((res) => {
         if (res.data.insertedId) {
           // order successfull modal
@@ -39,7 +39,9 @@ const Booking = () => {
   };
 
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/products/${furnitureId}`)
+    fetch(
+      `https://modern-furniture-server.onrender.com/products/${furnitureId}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setFurniture(data);

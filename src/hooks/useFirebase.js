@@ -116,7 +116,7 @@ const useFirebase = () => {
 
   const saveUserToDatabase = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch('https://modern-furniture-server.vercel.app/users', {
+    fetch('https://modern-furniture-server.onrender.com/users', {
       method: method,
       headers: {
         'content-type': 'application/json',
@@ -127,7 +127,7 @@ const useFirebase = () => {
 
   // getting admin user
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/users/${user.email}`)
+    fetch(`https://modern-furniture-server.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);

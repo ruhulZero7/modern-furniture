@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../hooks/useAuth';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,7 +35,7 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`https://modern-furniture-server.vercel.app/orders/${user.email}`)
+    fetch(`https://modern-furniture-server.onrender.com/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orders, user]);
@@ -52,7 +52,7 @@ const MyOrders = () => {
       confirmButtonText: 'Yes, Cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        const url = `https://modern-furniture-server.vercel.app/orders/${id}`;
+        const url = `https://modern-furniture-server.onrender.com/orders/${id}`;
         fetch(url, {
           method: 'DELETE',
         })

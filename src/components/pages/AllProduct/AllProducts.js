@@ -10,7 +10,7 @@ const AllProducts = () => {
   console.log(products);
 
   useEffect(() => {
-    fetch('https://modern-furniture-server.vercel.app/products')
+    fetch('https://modern-furniture-server.onrender.com/products')
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
